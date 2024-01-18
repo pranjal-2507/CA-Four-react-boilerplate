@@ -8,6 +8,7 @@ import './QuestionBox.css'
  function QuestionBox() {
   return (
     <>
+    <button className='Mode'>Dark</button>
     {/* <div className="navBar">
       <img src={Quizzo} alt="" />
     </div> */}

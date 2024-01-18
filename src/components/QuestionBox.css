@@ -3,6 +3,22 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+.Mode{
+    width: 150px;
+    position: absolute;
+    padding: 6px 10px 10px 10px;
+    border-radius: 20px;
+    right: 35px;
+    top: 20px;
+    font-size: 20px;
+    cursor:pointer;
+    background-color: #939392;
+    
+}
+.Mode:hover{
+    box-shadow : 1px 1px 1px 1px  #93939293 ;
+
+}
 .container {
   background-color: white;
   width: 80%;
