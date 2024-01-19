@@ -1,35 +1,85 @@
-import React from 'react'
-import './QuestionBox.css'
-// import Quizzo from '/components/Quizzo.png'
+import React, { useState } from 'react';
+import './QuestionBox.css';
+import Quizzo from './Quizzo.png';
+import { MdLightMode, MdDarkMode } from 'react-icons/md';
+import questionsData from '../questions';
+import Result from './Result'; 
 
+function QuestionBox() {
+  const [questionIndex, setQuestionIndex] = useState(0);
+  const [textColor, setTextColor] = useState('black');
+  const [isBlack, setIsBlack] = useState(true);
+  const [containerColor, setContainerColor] = useState('white');
+  const [isHighlighted, setIsHighlighted] = useState(false);
 
+  const handleColor = () => {
+    setIsBlack(!isBlack);
+    setTextColor(isBlack ? 'red' : 'black');
+  };
 
+  const toggleMode = () => {
+    setIsBlack(!isBlack);
+    setTextColor(isBlack ? 'white' : 'black');
+    setContainerColor(isBlack ? 'rgb(86 81 81)' : 'white');
+  };
 
- function QuestionBox() {
+  const highlightText = () => {
+    setIsHighlighted(true);
+    setTextColor('red');
+  };
+
+  const removeHighlight = () => {
+    setIsHighlighted(false);
+    setTextColor(isBlack ? 'black' : 'white');
+  };
+
+  const handleOptionClick = () => {
+    setQuestionIndex((prevIndex) => prevIndex + 1);
+  
+    setIsHighlighted(false);
+    setTextColor(isBlack ? 'black' : 'white');
+  };
+
+  
+  if (questionIndex === questionsData.length) {
+    return <Result />;
+  }
+
   return (
     <>
-    <button className='Mode'>Dark</button>
-    {/* <div className="navBar">
-      <img src={Quizzo} alt="" />
-    </div> */}
-  <div className="main">
-    <div className="container">
-        <h2 className='NoOfQues'>Question : 1 out of 5</h2>
-        <h1 className='Questions'>What is React js?</h1>
+      <div className="navBar">
+        <img className="logo" src={Quizzo} alt="" />
+        <button className="Mode" onClick={toggleMode}>
+          {isBlack ? <MdDarkMode /> : <MdLightMode />}
+        </button>
+      </div>
+      <div className="main">
+        <div className="container" style={{ backgroundColor: containerColor }}>
+          <h2 className="NoOfQues">Question: {questionIndex + 1} out of {questionsData.length}</h2>
+          <h1 className="Questions" style={{ color: isHighlighted ? 'red' : 'black' }}>
+            {questionsData[questionIndex].text}
+          </h1>
 
-        <div className="options">
-          <div id='optA' className='option'><span className='ABCD'>A. </span>Server Side Framework</div>
-          <div id='optB' className='option'><span className='ABCD'>B. </span>User Interface Framework</div>
-          <div id='optC' className='option'><span className='ABCD'>C. </span>Both A and B</div>
-          <div id='optD' className='option'><span className='ABCD'>D. </span>None of these</div>
+          <div className="options">
+            {questionsData[questionIndex].options.map((option) => (
+              <div key={option.id} className="option" onClick={handleOptionClick}>
+                <span className="ABCD">{String.fromCharCode(65 + option.id)}. </span>
+                {option.text}
+              </div>
+            ))}
+          </div>
+          <div className="Btns">
+            <button className="Btn" onClick={highlightText}>
+              Highlight
+            </button>
+            <button className="Btn" onClick={removeHighlight}>
+              Remove Highlight
+            </button>
+          </div>
         </div>
-        <div className="Btns">
-          <button className='Btn'>Highlight</button>
-          <button className='Btn'>Remove Highlight</button>
-        </div>
-    </div>
-    </div>
+      </div>
     </>
-  )
+  );
 }
-export default QuestionBox
+
+export default QuestionBox;
