@@ -1,46 +1,45 @@
-import React, { useState } from 'react';
-import './QuestionBox.css';
-import Quizzo from './Quizzo.png';
-import { MdLightMode, MdDarkMode } from 'react-icons/md';
-import questionsData from '../questions';
-import Result from './Result'; 
+import React, { useState } from "react";
+import "./QuestionBox.css";
+import Quizzo from "./Quizzo.png";
+import { MdLightMode, MdDarkMode } from "react-icons/md";
+import questionsData from "../questions";
+import Result from "./Result";
 
 function QuestionBox() {
   const [questionIndex, setQuestionIndex] = useState(0);
-  const [textColor, setTextColor] = useState('black');
+  const [textColor, setTextColor] = useState("black");
   const [isBlack, setIsBlack] = useState(true);
-  const [containerColor, setContainerColor] = useState('white');
+  const [containerColor, setContainerColor] = useState("white");
   const [isHighlighted, setIsHighlighted] = useState(false);
 
   const handleColor = () => {
     setIsBlack(!isBlack);
-    setTextColor(isBlack ? 'red' : 'black');
+    setTextColor(isBlack ? "red" : "black");
   };
 
   const toggleMode = () => {
     setIsBlack(!isBlack);
-    setTextColor(isBlack ? 'white' : 'black');
-    setContainerColor(isBlack ? 'rgb(86 81 81)' : 'white');
+    setTextColor(isBlack ? "white" : "black");
+    setContainerColor(isBlack ? "rgb(86 81 81)" : "white");
   };
 
   const highlightText = () => {
     setIsHighlighted(true);
-    setTextColor('red');
+    setTextColor("red");
   };
 
   const removeHighlight = () => {
     setIsHighlighted(false);
-    setTextColor(isBlack ? 'black' : 'white');
+    setTextColor(isBlack ? "black" : "white");
   };
 
   const handleOptionClick = () => {
     setQuestionIndex((prevIndex) => prevIndex + 1);
-  
+
     setIsHighlighted(false);
-    setTextColor(isBlack ? 'black' : 'white');
+    setTextColor(isBlack ? "black" : "white");
   };
 
-  
   if (questionIndex === questionsData.length) {
     return <Result />;
   }
@@ -55,15 +54,26 @@ function QuestionBox() {
       </div>
       <div className="main">
         <div className="container" style={{ backgroundColor: containerColor }}>
-          <h2 className="NoOfQues">Question: {questionIndex + 1} out of {questionsData.length}</h2>
-          <h1 className="Questions" style={{ color: isHighlighted ? 'red' : 'black' }}>
+          <h2 className="NoOfQues">
+            Question: {questionIndex + 1} out of {questionsData.length}
+          </h2>
+          <h1
+            className="Questions"
+            style={{ color: isHighlighted ? "red" : "black" }}
+          >
             {questionsData[questionIndex].text}
           </h1>
 
           <div className="options">
             {questionsData[questionIndex].options.map((option) => (
-              <div key={option.id} className="option" onClick={handleOptionClick}>
-                <span className="ABCD">{String.fromCharCode(65 + option.id)}. </span>
+              <div
+                key={option.id}
+                className="option"
+                onClick={handleOptionClick}
+              >
+                <span className="ABCD">
+                  {String.fromCharCode(65 + option.id)}.{" "}
+                </span>
                 {option.text}
               </div>
             ))}

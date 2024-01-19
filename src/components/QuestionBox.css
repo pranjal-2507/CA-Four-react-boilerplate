@@ -3,29 +3,25 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
-.logo{
+.logo {
   position: absolute;
   width: 250px;
   margin-top: -100px;
   margin-left: 650px;
-  
 }
-.Mode{
-
-    width: 120px;
-    position: absolute;
-    padding: 10px 10px 10px 10px;
-    border-radius: 20px;
-    right: 35px;
-    top: 20px;
-    font-size: 20px;
-    cursor:pointer;
-    background-color: #939392;
-    
+.Mode {
+  width: 120px;
+  position: absolute;
+  padding: 10px 10px 10px 10px;
+  border-radius: 20px;
+  right: 35px;
+  top: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #939392;
 }
-.Mode:hover{
-    box-shadow : 1px 1px 1px 1px  #93939293 ;
-
+.Mode:hover {
+  box-shadow: 1px 1px 1px 1px #93939293;
 }
 .container {
   background-color: white;

@@ -1,30 +1,30 @@
-.cont{
-    width: 70%;
-    height: 366px;
-    background-color: #fff;
-    margin-top: 180px;
-    margin-left: 220px;
+.cont {
+  width: 70%;
+  height: 366px;
+  background-color: #fff;
+  margin-top: 180px;
+  margin-left: 220px;
 }
-.result{
-    text-align: center;
-    padding-top: 40px;
+.result {
+  text-align: center;
+  padding-top: 40px;
 }
-.score{
-    text-align: center;
-    padding-top: 25px;
+.score {
+  text-align: center;
+  padding-top: 25px;
 }
-.restart{
-    width: 150px;
-    padding: 10px 10px 10px 10px ;
-    border-radius: 10px;
-    position: absolute;
-    top: 410px;
-    right: 700px;
-    background-color: #43a3db;
-     cursor: pointer;
-     font-weight:bold;
+.restart {
+  width: 150px;
+  padding: 10px 10px 10px 10px;
+  border-radius: 10px;
+  position: absolute;
+  top: 410px;
+  right: 700px;
+  background-color: #43a3db;
+  cursor: pointer;
+  font-weight: bold;
 }
-.restart:hover{
-    box-shadow: 1px 2px 2px 1px black;
-    background-color: #43a3dbe3;
+.restart:hover {
+  box-shadow: 1px 2px 2px 1px black;
+  background-color: #43a3dbe3;
 }
