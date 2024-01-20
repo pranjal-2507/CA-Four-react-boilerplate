@@ -6,11 +6,12 @@ import questionsData from "../questions";
 import Result from "./Result";
 
 function QuestionBox() {
-  const [questionIndex, setQuestionIndex] = useState(0);
-  const [textColor, setTextColor] = useState("black");
-  const [isBlack, setIsBlack] = useState(true);
-  const [containerColor, setContainerColor] = useState("white");
-  const [isHighlighted, setIsHighlighted] = useState(false);
+    const [questionIndex, setQuestionIndex] = useState(0);
+    const [textColor, setTextColor] = useState("black");
+    const [isBlack, setIsBlack] = useState(true);
+    const [containerColor, setContainerColor] = useState("white");
+    const [isHighlighted, setIsHighlighted] = useState(false);
+    const [correctCount, setCorrectCount] = useState(0);
 
   const handleColor = () => {
     setIsBlack(!isBlack);
@@ -33,7 +34,11 @@ function QuestionBox() {
     setTextColor(isBlack ? "black" : "white");
   };
 
-  const handleOptionClick = () => {
+  const handleOptionClick = (val) => {
+    // console.log(val)
+    if(val===true){
+      setCorrectCount(correctCount+1)
+    }
     setQuestionIndex((prevIndex) => prevIndex + 1);
 
     setIsHighlighted(false);
@@ -41,7 +46,7 @@ function QuestionBox() {
   };
 
   if (questionIndex === questionsData.length) {
-    return <Result />;
+    return <Result correctCount={correctCount} />; 
   }
 
   return (
@@ -69,7 +74,7 @@ function QuestionBox() {
               <div
                 key={option.id}
                 className="option"
-                onClick={handleOptionClick}
+                onClick={()=>handleOptionClick(option.isCorrect)}
               >
                 <span className="ABCD">
                   {String.fromCharCode(65 + option.id)}.{" "}
